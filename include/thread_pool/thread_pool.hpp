@@ -7,7 +7,6 @@
 namespace dispatcher::thread_pool {
 
 class ThreadPool {
-    std::atomic<bool> stopping_{false};
     std::shared_ptr<queue::PriorityQueue> pq_;
     std::vector<std::jthread> workers_;
 
@@ -16,7 +15,7 @@ public:
     ~ThreadPool();
 
 private:
-    void worker_thread();
+    void worker_thread(std::stop_token);
 };
 
 }  // namespace dispatcher::thread_pool
