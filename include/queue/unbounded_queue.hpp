@@ -1,12 +1,16 @@
 #pragma once
 #include "queue/queue.hpp"
+#include <atomic>
+#include <deque>
 
 namespace dispatcher::queue {
 
 class UnboundedQueue : public IQueue {
-    // здесь ваш код
+    std::deque<std::function<void()>> buffer_;
+    std::atomic_flag lock_{false};
+
 public:
-    explicit UnboundedQueue(int capacity);
+    explicit UnboundedQueue();
 
     void push(std::function<void()> task) override;
 

@@ -23,6 +23,16 @@
             "cwd": "${workspaceFolder}/build",
             "preLaunchTask": "GCC: Build Debug",
             "initCommands": ["settings set target.disable-aslr false"]
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Launch dispatcher",
+            "program": "${workspaceFolder}/build/dispatcher",
+            "args": [],
+            "cwd": "${workspaceFolder}/build",
+            "preLaunchTask": "GCC: Build Debug",
+            "initCommands": ["settings set target.disable-aslr false"]
         }
     ]
 }
